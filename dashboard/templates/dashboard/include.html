@@ -1,0 +1,21 @@
+<div class="row font-1">
+    <div class="col-lg-4">
+        <div class="card card-body flex-row align-items-center my_background">
+            <!-- <h3 class="m-0 btn btn-lg btn-block"><i class="material-icons align-middle text-muted md-18">check_box</i> <a href="{% url 'dashboard:active-investments' %}"> Active Investments </a></h3>
+            <div class="text-primary ml-auto">{{ active_investments }}</div> -->
+            <a href="{% url 'dashboard:active-investments' %}" class="btn btn-primary btn-block btn-lg my_btn" class="my_red"> Active Investments -  {{ active_investments }} </a>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card card-body flex-row align-items-center my_background"> 
+            <!-- <h3 class="m-0"> <i class="material-icons align-middle text-muted md-18">queue</i> <a href="{% url 'dashboard:pending-investments' %}"> Pending Investments</a></h3> -->
+            <a href="{% url 'dashboard:pending-investments' %}" class="btn btn-primary btn-block btn-lg my_btn" class="my_red"> Pending Investments -  {{ pending_investments }} </a>
+        </div>
+    </div>
+    <div class="col-lg-4">
+        <div class="card card-body flex-row align-items-center my_background">
+            <!-- <h3 class="m-0"><i class="material-icons align-middle text-muted md-18">all_inclusive</i> <a href="{% url 'dashboard:payment-history' %}"> Total Payments</a></h3> -->
+            <a href="{% url 'dashboard:payment-history' %}" class="btn btn-primary btn-block btn-lg my_btn" class="my_red"> Total Payments -  {{ total_payments }} </a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+{% extends './base.html' %}
+
+{% load humanize %}
+
+{% block content %}
+<!-- {% include './info.html' %} -->
+<div class="container-fluid">
+    <div class="tab-content" id="accountTabsContent">
+    <div class="table-responsive">
+        <table class="table m-0">
+            <thead> 
+                <tr class="bg-fade">
+                    <th>Activation Date</th>
+                    <th>Expiration Date</th>
+                    <th>Investment Amount</th>
+                    <th>Expected Amount (Bi-weekly)</th>
+                    <th>Investment Plan</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for investment in investments %}
+                <tr>
+                    <td class="align-middle"> {{ investment.activation_date | date }} </td>
+
+                    <td class="align-middle">
+                        {{ investment.expiration_date | date }}
+                    </td>
+                    <td class="align-middle">₦{{ investment.pop.amount }}</td>
+                    <td class="align-middle">₦{{ investment.amount | intcomma }}</td>
+                    <td class="align-middle">
+                        <div class="badge badge-"> {{ investment.pop.investment_plan.name }} </div>
+                    </td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+</div>
+
+{% endblock %}

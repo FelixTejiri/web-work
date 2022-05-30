@@ -1,0 +1,1 @@
+from sequencefx.wsgi import application

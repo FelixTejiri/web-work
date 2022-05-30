@@ -1,0 +1,72 @@
+{% extends './base.html' %}
+
+{% load widget_tweaks %}
+
+{% block hero %} {% endblock %}
+
+{% block content %}
+
+
+<section id="contact" class="container parallax5">
+    <!-- Contact Inner -->
+    <div class="inner contact padding">
+
+        <!-- Header -->
+        <h1 class="header semibold white">Register With<span class="extrabold colored"> SeQuenceFX</span></h1>
+
+        <!-- Description -->
+        <h4 class="h-desc white contact-text">Simply register with us and begin investments immediately </h4>
+
+        <!-- Form Area -->
+        <div class="contact-form">
+            <!-- Form -->
+            <form id="contac-tus" method="post" action="{% url 'mainsite:register' %}">
+                {% csrf_token %}
+                <!-- Left Inputs -->
+                <div class="col-xs-3 animated" data-animation="fadeInLeft" data-animation-delay="300"></div>
+                <div class="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
+                    <!-- First Name -->
+                    {{ form.first_name.errors }}<br>
+                    {{ form.first_name | add_class:'form light' | attr:'placeholder:First Name' }}
+                    <!-- Last Name -->
+                    {{ form.last_name.errors }}<br>
+                    {{ form.last_name | add_class:'form light' | attr:'placeholder:Last Name' }}
+                    <!-- Email -->
+                    <div class="my_red">
+                        {{ form.email.errors | safe }}<br></br>
+                    </div>
+                        {{ form.email | add_class:'form light' | attr:'placeholder:Email' | attr:'type:email' }}
+                    <!-- Password -->
+                    {{ form.password.errors }}<br>
+                    {{ form.password | add_class:'form light' | attr:'placeholder:Password' }}
+                    <!-- Confirm Password -->
+                    {{ form.password2.errors }}<br>
+                    {{ form.password2 | add_class:'form light' | attr:'placeholder:Confirm Password' }}
+
+                    <!-- Referrer -->
+                    <p class="light" style="color:white;">Referrer ID (Optional)</p><br>
+                    <input type="number" name="{{form.referrer.name}}" placeholder="Referrer Id (Optional)" class="form light" id="referrer" value="{{ref_id}}">
+                    
+                </div><!-- End Left Inputs -->
+                <!-- Bottom Submit -->
+                <div class="relative fullwidth col-xs-12">
+                    <!-- Send Button -->
+                    <button type="submit" id="sumit" name="submit" class="form-btn light">Register</button> 
+                </div><!-- End Bottom Submit -->
+                <!-- Clear -->
+                <div class="clear"></div>
+            </form>
+
+            <!-- Your Mail Message -->
+            <div class="mail-message-area">
+                <!-- Message -->
+                <div class="alert gray-bg mail-message not-visible-message">
+                    <strong>Thank You !</strong> Your email has been delivered.
+                </div>
+            </div>
+
+        </div><!-- End Contact Form Area -->
+    </div><!-- End Inner -->
+</section><!-- End Contact Section -->
+
+{% endblock %}

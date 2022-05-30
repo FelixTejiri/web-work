@@ -1,0 +1,102 @@
+{% extends './base.html' %}
+
+{% load widget_tweaks %}
+{% load humanize %}
+
+{% block global %}
+
+<div class="container-fluid">
+    <div class="jumbotron jumbotron-fluid" style="background:#202020; padding:20px !important">
+        <div class="container">
+            <h2 class="">Important!</h2>
+            <p>Please clearly state out the name of the sender and the account details from which the money was sent in the "Extra" field.</p>
+            <p> If your payment was via cryptocurrency (BTC or ETH) please send the exact amount of either BTC or ETH you sent to our wallets in the amount section. Also, specify exactly the cryptocurrency you sent (either BTC or ETH) in the Extra section also. </p>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block content %}
+
+<!-- main content -->
+
+<div class="container-fluid">
+    <div class="tab-content" id="accountTabsContent"> 
+        <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+
+            {% if messages %}
+                {% for message in messages %}
+                {% if message.tags == 'error' %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endif %}
+                {% if message.tags == 'success' %}
+                <div class="alert alert-success">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+
+        </div>
+        <div class="card-boy">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card card-account">
+                        <div class="card-body">
+                            <form method="POST" action="{% url 'dashboard:upload-pop' %}" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    {{ form.amount.label_tag }}
+                                    <div class="input-group input-group--inline">
+                                        <div class="input-group-addon">
+                                            <div style="padding-bottom:8px">₦</div>
+                                        </div>
+                                        {{ form.amount | add_class:'form-control' }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{ form.investment_plan.label_tag }}
+                                    <div class="input-group input-group--inline">
+                                        <div class="input-group-addon">
+                                            <i class="material-icons">insert_chart</i>
+                                        </div>
+                                        {{ form.investment_plan | add_class:'form-control' }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{ form.file.label_tag }}
+                                    <div class="input-group input-group--inline">
+                                        <div class="input-group-addon">
+                                        </div>
+                                        {{ form.file | add_class:'form-control-file' }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{ form.extra.label_tag }}
+                                    <div class="input-group input-group--inline">
+                                        <div class="input-group-addon">
+                                        </div>
+                                        {{ form.extra | add_class:'form-control' }}
+                                    </div>
+                                </div>
+                                <button class="btn btn-success">Upload</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

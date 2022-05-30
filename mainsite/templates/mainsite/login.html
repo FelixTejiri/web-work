@@ -1,0 +1,57 @@
+{% extends './base.html' %}
+
+{% load widget_tweaks %}
+
+{% block hero %} {% endblock %}
+
+{% block content %}
+
+
+<section id="contact" class="container parallax5">
+    <!-- Contact Inner -->
+    <div class="inner contact padding">
+
+        <!-- Header -->
+        <h1 class="header semibold white">Login to <span class="extrabold colored"> SeQuenceFX</span> User Dashboard</h1>
+
+        <!-- Description -->
+        <h4 class="h-desc white contact-text"> Please fill in your login details correctly below. </h4>
+
+        {% if form.email.errors %}
+        <div class="mail-message-area">
+            <!-- Message -->
+            <div class="error gray-bg mail-message">
+                <strong>{{ form.email.errors | safe }}</strong>
+            </div>
+        </div><br><br>
+        {% endif %}
+
+        <!-- Form Area -->
+        <div class="contact-form">
+            <!-- Form -->
+            <form id="contac-tus" method="post" action="{% url 'mainsite:login' %}">
+                {% csrf_token %}
+                <!-- Left Inputs -->
+                <div class="col-xs-3 animated" data-animation="fadeInLeft" data-animation-delay="300"></div>
+                <div class="col-xs-6 animated" data-animation="fadeInLeft" data-animation-delay="300">
+                    <!-- Email -->
+                    {{ form.email | add_class:'form light' | attr:'placeholder:Email' | attr:'type:email' }}
+                    <!-- Password -->
+                    {{ form.password | add_class:'form light' | attr:'placeholder:Password' }}              
+                </div><!-- End Left Inputs -->
+                <!-- Bottom Submit -->
+                <div class="relative fullwidth col-xs-12">
+                    <!-- Send Button -->
+                    <button type="submit" id="sumit" name="submit" class="form-btn light">Login</button> 
+                </div><!-- End Bottom Submit -->
+                <!-- Clear -->
+                <div class="clear"></div>
+            </form>
+
+            <!-- Your Mail Message -->
+
+        </div><!-- End Contact Form Area -->
+    </div><!-- End Inner -->
+</section><!-- End Contact Section -->
+
+{% endblock %}

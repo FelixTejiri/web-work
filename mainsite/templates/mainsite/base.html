@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<style>
+	
+	.my_red {
+		color:#fe0207 !important;
+	}
+
+	.my_white {
+		color:#f8f8f8 !important;
+	}
+
+</style>
+
+
+{% load static %}
+
+<!-- Mirrored from oxygen.goldeyestheme.com/oxygen/index7.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Aug 2020 15:21:28 GMT -->
+<head>
+
+    <meta charset="utf-8" />
+    {% block title %} <title>Sequence FX - Learn | Achieve | Earn</title> {% endblock %}
+    <meta name="description" content="" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <!--Favicon -->
+	<link rel="icon" type="image/png" href="{% static 'mainsite/images/favicon.png' %}" />
+		
+	<!-- CSS Files --> 
+		
+	<link rel="stylesheet" href="{% static 'mainsite/css/reset.css' %}" />
+	<link rel="stylesheet" href="{% static 'mainsite/css/animate.min.css' %}"/>
+	<link rel="stylesheet" href="{% static 'mainsite/css/bootstrap.min.css' %}" />
+	<link rel="stylesheet" href="{% static 'mainsite/css/style.css' %}" />
+	<link rel="stylesheet" href="{% static 'mainsite/css/flexslider.css' %}" />
+	<!-- <link rel="stylesheet" href="{% static 'mainsite/css/font-awesome.css' %}" /> -->
+	<link rel="stylesheet" href="{% static 'mainsite/css/owl.carousel.css' %}" />
+	<link rel="stylesheet" href="{% static 'mainsite/css/prettyPhoto.css' %}" />
+	<link rel="stylesheet" href="{% static 'mainsite/css/responsive.css' %}" />
+	<link rel="stylesheet" href="{% static 'mainsite/css/gradients.css' %}" />
+    <link rel="stylesheet" href="{% static 'mainsite/css/player/YTPlayer.css' %}" />
+	<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@500&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- Theme Panel -->
+	<!-- <link rel="stylesheet" href="theme-panel/theme_panel.css" /> -->
+	<!-- Skin Colors -->
+	<link id="changeable-colors" rel="stylesheet" href="{% static 'mainsite/css/colors/red.css' %}" />
+
+	<!-- End CSS Files -->
+ 
+</head>
+
+<body>
+
+
+	<!-- Page Loader -->
+	<section id="pageloader">
+		<div class="loader-item fa fa-spin colored-border"></div>
+	</section>
+
+
+	<!-- Navigation -->
+	
+	<section id="navigation" class="{% if slug == 'index' %}not-visible-nav {% endif  %} white-nav">
+		<!-- Navigation Inner -->
+		<div class="nav-inner">
+			<!-- Site Logo -->
+			<div class="site-logo">
+				<a href="{% url 'mainsite:index' %}" class="scroll logo">
+					<!-- Your Logo -->
+					<img src="{% static 'mainsite/images/logo.png' %}" alt="logo" />
+				</a>
+			</div><!-- End Site Logo -->
+			<a class="mini-nav-button dark"><i class="fa fa-bars"></i></a>
+			<!-- Navigation Menu -->
+			<div class="nav-menu">
+				<ul class="nav uppercase condensed bold">
+					<li class="{% if slug == 'index' %} active {% endif %}"><a href="{% url 'mainsite:index' %}" class="scroll">home</a></li>			
+					<li class="{% if slug == 'register' %} active {% endif %}"><a href="{% url 'mainsite:register' %}" class="scroll">register</a></li>
+					<li class="{% if slug == 'login' %} active {% endif %}"><a href="{% if request.session.user_id %} {% url 'dashboard:index' %} {% else %} {% url 'mainsite:login' %} {% endif %}" class="scroll">{% if request.session.user_id %} dashboard {% else %} login {% endif %}</a></li>
+					<li class="{% if slug == 'about-us' %} active {% endif %}"><a href="{% url 'mainsite:about-us' %}" class="scroll">about us</a></li>
+					<li class=""><a href="{% url 'mainsite:about-us' %}#tandc" class="scroll">T and C</a></li>
+					<li class=""><a href="{% url 'mainsite:index' %}#investment-plans" class="scroll">Investment Plans</a></li>
+					<li class="{% if slug == 'faqs' %} active {% endif %}"><a href="{% url 'mainsite:faqs' %}" class="scroll">faqs</a></li>
+					<li class=""><a href="{% url 'mainsite:index' %}#contact" class="scroll">contact</a></li>
+				</ul>
+			</div><!-- End Navigation Menu -->
+		</div><!-- End Navigation Inner -->
+    </section><!-- End Navigation Section -->
+
+    {% block hero %}
+    <section id="home"> 	
+        <div id="slides" class="home parallax">
+
+            <!-- Slides -->
+            <div class="slides-container relative">
+                <!-- Slider Images -->
+                <div class="image1 pattern-black"></div>
+                <div class="image2 pattern-black"></div>
+                <div class="image3 pattern-black"></div>
+                 <!-- End Slider Images -->	 
+            </div>
+            <!-- Slider Controls -->
+            <!-- <nav class="slides-navigation">
+              <a href="#" class="next"></a>
+              <a href="#" class="prev"></a>
+            </nav> -->
+
+            <!-- Home Details -->
+            <div class="home-details-tb absolute">
+                <!-- Home Details Inner -->
+                <div class="relative home-details-inner">
+                    <!-- Your Logo -->
+                    <div class="logo">
+                        <img src="{% static 'mainsite/images/logo-icon.png' %}" alt="Logo" />
+                     </div> 
+                    <div class="hometexts">
+                            <!-- Slide Texts -->
+                            <!-- <ul class="slide-text condensed">
+                                <li class="hometext bold uppercase">Welcome to <span class="colored"> SeQuenceFX </span></li>
+                                <li class="hometext bold uppercase">Financial <span class="colored"> Investments</span></li>
+                                <li class="hometext bold uppercase">Account <span class="colored"> Management</span></li>
+                            </ul> -->
+                    </div>
+                    <!-- Fixed Text -->
+                    <h2 class="white"> Invest and earn up to 30% of your investment <span class="colored">Monthly</span> </h2>
+					<!-- Home Categories -->
+					<br /><br /><br />
+                    <ul class="home-categories">
+                        <li class="h-item uppercase ">Financial Investments</li>
+                        <li class="h-item uppercase ">Forex Educators</li>
+                        <li class="h-item uppercase ">Account Management</li>
+                        <!-- <li class="h-item uppercase ">photography</li>
+                        <li class="h-item uppercase ">cool animations</li> -->
+					</ul>
+					<br /><br /><br />
+                    <!-- Bottom Arrow -->
+                    <a href="{% url 'mainsite:register' %}" class="home-arrow scroll uppercase bold">
+						<img src="{% static 'mainsite/images/bottom-arrow.png' %}" alt="bottom" />
+						<br />
+                        <span>Register</span>
+					</a>
+					<!-- <a href="{% url 'mainsite:register' %}" class="price-buy-now uppercase semibold white">Register</a> -->
+                </div><!-- End Home Texts -->
+
+            </div>
+        </div><!-- End Home Details -->
+    </section><!-- End Home Section -->
+    {% endblock %}
+
+    {%block content %} {% endblock %}
+    
+
+
+    <!-- Site Socials and Address -->
+	<section id="site-socials" class="no-padding white-bg">
+		<div class="site-socials inner no-padding">
+			<!-- Socials -->
+			<div class="socials">
+				<!-- Facebook -->
+				<a href="#" target="_blank" class="social">
+					<i class="fa fa-facebook"></i>
+				</a>
+				<!-- Twitter -->
+				<a href="#" target="_blank" class="social">
+					<i class="fa fa-twitter"></i>
+				</a>
+				<!-- Google Plus -->
+				<!-- <a href="#" target="_blank" class="social">
+					<i class="fa fa-google-plus"></i>
+				</a> -->
+				<!-- Linkedin -->
+				<a href="#" target="_blank" class="social">
+					<i class="fa fa-linkedin"></i>
+				</a>
+				<!-- Instagram -->
+				<a href="#" class="social">
+					<i class="fa fa-instagram"></i>
+				</a>
+				<!-- Vimeo -->
+				<!-- <a href="#" target="_blank" class="social">
+					<i class="fa fa-vimeo-square"></i>
+				</a> -->
+			</div>
+			<!-- Adress, Mail -->
+			<div class="address">
+				<!-- Phone Number, Mail -->
+				<p>+(234)9063332349, +(234)8103130041, +(234)9067433369 & <a href="mailto:contact@sequencefxinvest@gmail.com" class="bold dark">contact@sequencefxinvest.com</a></p>
+				<!-- Adress -->
+				<p>No 36 Victoria Garden, Lucky Str. Ugbowo <span class="bold colored">Benin City, </span>Edo State Nigeria.</p>
+				<!-- Top Button -->
+				<a href="#home" class="scroll top-button">
+					<i class="fa fa-angle-double-up"></i>
+				</a>
+			</div><!-- End Adress, Mail -->
+		</div><!-- End Inner -->
+	</section><!-- End Site Socials and Address -->
+
+
+
+
+
+	<!-- Footer -->
+	<footer class="footer">
+		<!-- Your Company Name -->
+		<h2 class="company-name condensed uppercase white bold"><span class="colored">SeQuenceFX</span> Investments</h2>
+		<!-- Copyright -->
+		<p class="copyright normal">© 2020 All Rights Reserved. Designed by the <span class="white">SequenceeFX</span> Media team</p>
+	</footer><!-- End Footer -->
+
+
+	<!-- JS Files -->
+	
+	<script type="text/javascript" src="{% static 'mainsite/js/jquery-1.11.0.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'mainsite/js/bootstrap.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'mainsite/js/jquery.appear.js' %}"></script>
+	<script type="text/javascript" src="{% static 'mainsite/js/waypoints.min.js' %}"></script>
+	<script type="text/javascript" src="{% static 'mainsite/js/jquery.prettyPhoto.js' %}"></script>
+	<script type="text/javascript" src="{% static 'mainsite/js/modernizr-latest.js' %}"></script>
+	<script type="text/javascript" src="{% static 'mainsite/js/SmoothScroll.js' %}"></script>
+	<script type="text/javascript" src="{% static 'mainsite/js/jquery.parallax-1.1.3.js' %}"></script>
+	<script type="text/javascript" src="{% static 'mainsite/js/jquery.easing.1.3.js' %}"></script>
+	<script type="text/javascript" src="{% static 'mainsite/js/jquery.superslides.js' %}"></script>
+	<script type="text/javascript" src="{% static 'mainsite/js/jquery.flexslider.js' %}"></script>
+	<script type="text/javascript" src="{% static 'mainsite/js/jquery.isotope.js' %}"></script>
+	<script type="text/javascript" src="{% static 'mainsite/js/jquery.mb.YTPlayer.js' %}"></script>
+	<script type="text/javascript" src="{% static 'mainsite/js/jquery.fitvids.js' %}"></script>
+	<script type="text/javascript" src="{% static 'mainsite/js/jquery.slabtext.js' %}"></script>
+	<script type="text/javascript" src="{% static 'mainsite/js/plugins.js' %}"></script>
+	<!-- Theme Panel JS -->
+	<!-- <script type="text/javascript" src="theme-panel/theme-panel.js"></script> -->
+
+	 <!-- End JS Files -->
+
+</body>
+
+
+<!-- Mirrored from oxygen.goldeyestheme.com/oxygen/index7.html by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 24 Aug 2020 15:22:44 GMT -->
+</html>

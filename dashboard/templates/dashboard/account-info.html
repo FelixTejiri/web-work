@@ -1,0 +1,171 @@
+{% extends './base.html' %}
+
+{% load widget_tweaks %}
+
+{% block content %}
+
+<!-- main content -->
+<div class="container-fluid">
+
+    <ul class="nav nav-pills mb-2" id="accountTabs" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="overview-tab" data-toggle="tab" href="#overview" role="tab" aria-controls="overview">Personal Infomation</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="billing-tab" data-toggle="tab" href="#billing" role="tab" aria-controls="billing">Bank Details</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="settings-tab" data-toggle="tab" href="#settings" role="tab" aria-controls="settings">Change Password</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="accountTabsContent">
+        <div class="tab-pane fade show active" id="overview" role="tabpanel" aria-labelledby="overview-tab">
+
+            {% if messages %}
+                {% for message in messages %}
+                {% if message.tags == 'error' %}
+                <div class="alert alert-danger">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endif %}
+                {% if message.tags == 'success' %}
+                <div class="alert alert-success">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                {% endif %}
+                {% endfor %}
+            {% endif %}
+
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card card-account">
+                        <div class="card-body">
+                            <form method="POST" action="{% url 'dashboard:account-info' %}?type=change-account-info">
+                                {% csrf_token %}
+                                <div class="form-row">
+                                    <div class="form-group col-lg-6">
+                                        {{ form.first_name.label_tag }}
+                                        <div class="input-group input-group--inline">
+                                            <div class="input-group-addon">
+                                                <i class="material-icons">person</i>
+                                            </div>
+                                            {{ form.first_name | add_class:'form-control' }}
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-6">
+                                        {{ form.last_name.label_tag }}
+                                        <div class="input-group input-group--inline">
+                                            <div class="input-group-addon">
+                                                <i class="material-icons">person</i>
+                                            </div>
+                                            {{ form.last_name | add_class:'form-control' }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{ form.email.label_tag }}
+                                    <div class="input-group input-group--inline">
+                                        <div class="input-group-addon">
+                                            <i class="material-icons">email</i>
+                                        </div>
+                                        {{ form.email | add_class:'form-control' | attr:'disabled:disabled' }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <!-- <label>Company</label> -->
+                                    {{ form.phone_number.label_tag }}
+                                    <div class="input-group input-group--inline">
+                                        <div class="input-group-addon">
+                                            <i class="material-icons">contact_phone</i>
+                                        </div>
+                                        {{ form.phone_number | add_class:'form-control' }}
+                                    </div>
+                                </div>
+                                <button class="btn btn-success">Save changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="settings" role="tabpanel" aria-labelledby="settings-tab">
+            <div class="row">
+                <div class="col-lg-8">
+                    <div class="card">
+                        <div class="card-body">
+                            <form method="POST" action="{% url 'dashboard:account-info' %}?type=change-pass">
+                                {% csrf_token %}
+                            <div class="form-group">
+                                {{ pass_form.old_password.label_tag }}<br>
+                                {{ pass_form.old_password | add_class:'form-control' }}
+                            </div>
+                            <div class="form-group">
+                                {{ pass_form.new_password.label_tag }}<br>
+                                {{ pass_form.new_password | add_class:'form-control' }}
+                            </div>
+                            <div class="form-group">
+                                {{ pass_form.confirm_password.label_tag }}<br>
+                                {{ pass_form.confirm_password | add_class:'form-control' }}
+                            </div>
+                            <button type="submit" class="btn btn-success">Change Password</button>
+                        </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="billing" role="tabpanel" aria-labelledby="billing-tab">
+            <div class="row">
+                <!-- <div class="col-lg-2"></div> -->
+                <div class="col-lg-8">
+                    <div class="card card-account">
+                        <div class="card-body">
+                            <form method="POST" action="{% url 'dashboard:account-info' %}?type=bank-details">
+                                {% csrf_token %}
+                                <div class="form-group">
+                                    {{ bank_form.bank_name.label_tag }}
+                                    <div class="input-group input-group--inline">
+                                        <div class="input-group-addon">
+                                            <i class="material-icons">account_balance</i>
+                                        </div>
+                                        {{ bank_form.bank_name | add_class:'form-control' }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{ bank_form.bank_account_number.label_tag }}
+                                    <div class="input-group input-group--inline">
+                                        <div class="input-group-addon">
+                                            <i class="material-icons">event_note</i>
+                                        </div>
+                                        {{ bank_form.bank_account_number | add_class:'form-control' }}
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    {{ bank_form.bank_account_name.label_tag }}
+                                    <div class="input-group input-group--inline">
+                                        <div class="input-group-addon">
+                                            <i class="material-icons">account_box</i>
+                                        </div>
+                                        {{ bank_form.bank_account_name | add_class:'form-control' }}
+                                    </div>
+                                </div>
+                                <button class="btn btn-success">Save changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

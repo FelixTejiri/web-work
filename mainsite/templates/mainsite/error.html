@@ -1,0 +1,27 @@
+{% extends './base.html' %}
+
+{% block hero %} {% endblock %}
+
+{% block content %} 
+
+<section id="contact" class="container parallax5">
+    <!-- Contact Inner -->
+    <div class="inner contact padding">
+
+        <!-- Header -->
+        <h1 class="header semibold white">SeQuenceFX<span class="extrabold colored"> Investments</span> Error Page</h1>
+
+        <!-- Description -->
+        
+        {% if errors %}
+        <ul class="messages">
+            {% for error in errors %}
+            <li class="h-desc white contact-text"> {{ error }} </li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        
+    </div><!-- End Inner -->
+</section><!-- End Contact Section -->
+
+{% endblock %}

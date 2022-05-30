@@ -1,0 +1,39 @@
+{% extends './base.html' %}
+
+{% load humanize %} 
+
+{% block content %}
+
+
+<div class="container-fluid">
+    <div class="table-responsive">
+        <table class="table m-0">
+            <thead>
+                <tr class="bg-fade">
+                    <th>Date</th>
+                    <th>#ID</th>
+                    <th>Amount</th>
+                    <th>Investment Plan</th>
+                    <th>Expected ROI</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for investment in investments %}
+                <tr>
+                    <td class="align-middle"> {{ investment.date | date }} </td>
+
+                    <td class="align-middle">
+                        <a href="#"># {{ forloop.counter}} </a>
+                    </td>
+                    <td class="align-middle">₦{{ investment.amount | intcomma }}</td>
+                    <td class="align-middle">{{ investment.investment_plan.name }}</td>
+                    <td class="align-middle">{{ investment.investment_plan.roi }}%</td>
+                </tr>
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends './base.html' %}
+
+{% block content %}
+
+<div class="container-fluid">
+    <div class="jumbotron jumbotron-fluid" style="background:#202020; padding:20px !important">
+        <div class="container">
+            <!-- <h2 class="">Important!</h2> -->
+            <p>We reward our investors for referring us to other potential investors. We pay a one time fee of 2% of investment capital if you happen to refer us to anyone who eventually invests with us. You will be immediately notified once someone who you referred makes and investment with us. The referral reward is scheduled to be paid to your account in about 5 working days from when the investment is made by the investor you referred us to.</p>
+            <p>To referr us to a potential investor kindly have the investor register on our platform with your referral Id. Below are your referral id and your referral link.</p>
+            <p>Check the <a href="{% url 'dashboard:referral-payments' %}">Referral Payments</a> page to see scheduled referral rewards</p>
+        </div>
+    </div>
+
+
+    <div id="accordion">
+        <div class="card">
+        <div class="card-header" id="headingOne">
+            <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Referral ID
+            </button>
+            </h5>
+        </div>
+    
+        <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+            <div class="card-body">
+            <p> {{user.id}} </p>
+            </div>
+        </div>
+        </div>
+        <div class="card">
+        <div class="card-header" id="headingTwo">
+            <h5 class="mb-0">
+            <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                Referral Link
+            </button>
+            </h5>
+        </div>
+        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+            <div class="card-body">
+                <p> https://sequencefxinvest.com/register/?ref={{user.id}} </p>
+            </div>
+        </div>
+        </div>
+        
+    </div>
+    
+
+</div>
+
+{% endblock %}
